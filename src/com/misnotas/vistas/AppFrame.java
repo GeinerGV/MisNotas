@@ -2,6 +2,7 @@ package com.misnotas.vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
@@ -15,10 +16,12 @@ import com.misnotas.vistas.componentes.main.AppToolbarLeft;
 public class AppFrame extends JFrame {
 
     public static final String APP_NAME = "Mis Notas";
+    public static final int MIN_SIZE = 300;
 
     public AppFrame() {
         super();
         setTitle(APP_NAME);
+        setMinimumSize(new Dimension(MIN_SIZE, MIN_SIZE));
         initComponents();
     }
 

@@ -14,7 +14,6 @@ import app.App;
 public class BtnToolBarLeft extends JButton {
 
 	public static final int BTN_SIZE = 40;
-
 	
 	private static final int ICON_SIZE = 32;
 

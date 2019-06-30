@@ -1,21 +1,57 @@
 package com.misnotas.vistas.componentes.base;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import app.App;
 
 /**
  * PnlLeftSplitPane
  */
 public class PnlLeftSplitPane extends JPanel {
-	private JLabel jLtitle = new JLabel("TITULO");
+	private JLabel jLtitle = new JLabel("[title]");
+	private static Color BG_TITLE = App.LIGTH_COLOR;
+
+	private static final int PAD_TITLE = 10;
+	private JPanel[] jPanels = new JPanel[BtnToolBarLeft.NUM_BTNS];
 	
 	public PnlLeftSplitPane() {
 		super();
 		setLayout(new BorderLayout());
-		jLtitle.setVerticalAlignment(JLabel.CENTER);
-		add(jLtitle, BorderLayout.NORTH);
+
+		JPanel jTitlePane = new JPanel(new GridBagLayout());
+		jTitlePane.setBackground(BG_TITLE);
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.insets = new Insets(PAD_TITLE,PAD_TITLE,PAD_TITLE,PAD_TITLE);
+		c.weightx = 0.0;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.anchor = GridBagConstraints.WEST;
+		jTitlePane.add(jLtitle, c);
+		jLtitle.setHorizontalAlignment(JLabel.LEFT);
+		add(jTitlePane, BorderLayout.NORTH);
+
+		selectPane(0);
+	}
+
+	public void selectPane(int pos) {
+		switch (pos) {
+			case 0:
+				jPanels[pos] = new PnlExplorer();
+				add((PnlExplorer) jPanels[pos], BorderLayout.CENTER);
+				break;
+		
+			default:
+				break;
+		}
 	}
 }

@@ -6,4 +6,5 @@ package com.misnotas.interfaces;
 public interface ModeloControlador {
 
     void setPosBtnLeftSelected(int pos);
+    void setNameBtnLeftSelected(String name);
 }

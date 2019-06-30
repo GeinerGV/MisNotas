@@ -49,7 +49,7 @@ public class BtnToolBarLeft extends JButton {
 		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				((AppFrame) getRootPane().getParent()).getControlador().onBtnLeftSelect(getName());
+				AppFrame.controlador.onBtnLeftSelect(getName());
 			}
 		});
 	}

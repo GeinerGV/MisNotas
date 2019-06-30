@@ -8,11 +8,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import com.misnotas.interfaces.ControladorVista;
 import com.misnotas.interfaces.ModeloVista;
 import com.misnotas.interfaces.VistaControlador;
 import com.misnotas.interfaces.VistaModelo;
+import com.misnotas.vistas.componentes.base.PnlLeftSplitPane;
 import com.misnotas.vistas.componentes.main.AppSplitPane;
 import com.misnotas.vistas.componentes.main.AppToolbarBottom;
 import com.misnotas.vistas.componentes.main.AppToolbarLeft;
@@ -23,9 +25,11 @@ import com.misnotas.vistas.componentes.main.AppToolbarLeft;
 public class AppFrame extends JFrame
     implements VistaControlador, VistaModelo {
 
-    private ControladorVista controlador;
+    public static ControladorVista controlador;
 
-    private ModeloVista modelo;
+    public static ModeloVista modelo;
+
+    public static AppFrame vista;
 
     public void setControlador(ControladorVista controlador) {
         this.controlador = controlador;
@@ -68,6 +72,7 @@ public class AppFrame extends JFrame
         super();
         setControlador(controlador);
         setModelo(modelo);
+        vista = this;
     }
 
     public void initComponents() {
@@ -95,15 +100,30 @@ public class AppFrame extends JFrame
     private AppToolbarBottom appToolbarBottom;
     private AppToolbarLeft appToolbarLeft;
 
+    private JPanel openFiles;
+
+    /**
+     * @param openFiles the openFiles to set
+     */
+    public void setOpenFiles(JPanel openFiles) {
+        this.openFiles = openFiles;
+    }
+
     // TODO: IMPLEMENTACIÓN VISTA
 
 	@Override
 	public void onBtnLeftSelectedChange() {
-		
+        ((PnlLeftSplitPane)appSplitPane.getLeftComponent()).selectPane(modelo.getPosBtnLeftSelected());
+        this.validate();
 	}
 
 	@Override
 	public int getPosBtnLeftSelected(String name) {
-		return 0;
-	}
+		switch (name.trim().toLowerCase()) {
+            case "buscar":
+                return 1;
+            default:
+                return 0;
+        }
+    }
 }

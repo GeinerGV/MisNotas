@@ -14,18 +14,30 @@ public class AppModelo
     public void setVista(VistaModelo vista) {
         this.vista = vista;
     }
+
+    private int posBtnleftSelected = 0;
+    private String nameBtnleftSelected = "Buscar";
     
     // TODO: IMPLEMENTACIÓN MODELO
 
     @Override
     public int getPosBtnLeftSelected() {
-        return 0;
+        return posBtnleftSelected;
     }
 
     @Override
     public void setPosBtnLeftSelected(int pos) {
-
+        posBtnleftSelected = pos;
+        vista.onBtnLeftSelectedChange();
     }
 
-    
+    @Override
+    public String getNameBtnLeftSelected() {
+        return nameBtnleftSelected;
+    }
+
+    @Override
+    public void setNameBtnLeftSelected(String name) {
+        nameBtnleftSelected = name;
+    }
 }

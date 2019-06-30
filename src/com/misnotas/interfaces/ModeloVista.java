@@ -6,4 +6,6 @@ package com.misnotas.interfaces;
 public interface ModeloVista {
 
     int getPosBtnLeftSelected();
+
+    String getNameBtnLeftSelected();
 }

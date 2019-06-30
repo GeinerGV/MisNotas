@@ -26,7 +26,10 @@ public class AppControlador implements ControladorVista {
 
     @Override
     public void onBtnLeftSelect(String name) {
-        System.out.println(name);
+        int pos = vista.getPosBtnLeftSelected(name);
+        modelo.setNameBtnLeftSelected(name);
+        modelo.setPosBtnLeftSelected(pos);
+
     }
 
     

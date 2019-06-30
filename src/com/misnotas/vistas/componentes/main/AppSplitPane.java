@@ -16,6 +16,5 @@ public class AppSplitPane extends JSplitPane {
         super(JSplitPane.HORIZONTAL_SPLIT, true);
         setLeftComponent(panelLeft);
         setRightComponent(panelRight);
-        
     }
 }
